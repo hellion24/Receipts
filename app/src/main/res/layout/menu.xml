@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/fon3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/pomidor"/>
+
+    <ImageButton
+        android:id="@+id/dann5"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/knopkaser_nazh"
+        android:backgroundTint="#D4272727"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dann6"
+        android:layout_marginTop="90dp"/>
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Каталог рецептов"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dann5"
+        app:layout_constraintEnd_toEndOf="@+id/dann5"
+        app:layout_constraintStart_toStartOf="@+id/dann5"
+        app:layout_constraintTop_toTopOf="@+id/dann5"/>
+
+    <ImageButton
+        android:id="@+id/dann6"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
+        android:background="@drawable/knopkaser_nazh"
+        android:backgroundTint="#D4272727"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dann5"
+        app:layout_constraintBottom_toTopOf="@id/dann7"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Сохранённые рецепты"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dann6"
+        app:layout_constraintEnd_toEndOf="@+id/dann6"
+        app:layout_constraintStart_toStartOf="@+id/dann6"
+        app:layout_constraintTop_toTopOf="@+id/dann6"/>
+
+    <ImageButton
+        android:id="@+id/dann7"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
+        android:background="@drawable/knopkaser_nazh"
+        android:backgroundTint="#D4272727"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dann6"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Заглушка, не помню, что тут"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dann7"
+        app:layout_constraintEnd_toEndOf="@+id/dann7"
+        app:layout_constraintStart_toStartOf="@+id/dann7"
+        app:layout_constraintTop_toTopOf="@+id/dann7"/>
+
+    <ImageButton
+        android:id="@+id/dann8"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
+        android:background="@drawable/knopkaser_nazh"
+        android:backgroundTint="#D4272727"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dann7"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Изменение рецептов"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dann8"
+        app:layout_constraintEnd_toEndOf="@+id/dann8"
+        app:layout_constraintStart_toStartOf="@+id/dann8"
+        app:layout_constraintTop_toTopOf="@+id/dann8"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
