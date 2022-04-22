@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
                         sleep(100);
                         logoTimer = logoTimer +100;
                     };
-                    Intent i=new Intent(MainActivity.this,Menu.class);
+                    Intent i=new Intent(MainActivity.this,Avtorizaciya.class);
                     startActivity(i);
                 }
                 catch (InterruptedException e) {
