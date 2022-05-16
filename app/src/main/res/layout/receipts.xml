@@ -93,7 +93,7 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:srcCompat="@drawable/Vilka" />
+        app:srcCompat="@drawable/vilka" />
 
     <TextView
         android:id="@+id/textView24"

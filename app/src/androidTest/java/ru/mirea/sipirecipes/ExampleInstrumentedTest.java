@@ -1,4 +1,4 @@
-package com.example.sipirecipes;
+package ru.mirea.sipirecipes;
 
 import android.content.Context;
 
