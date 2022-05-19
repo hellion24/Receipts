@@ -1,6 +1,4 @@
-package ru.mirea.sipirecipes.domain.model
-
-import java.util.*
+package ru.mirea.sipirecipes.data.model
 
 data class UserEntity(
     val uuid: String,

@@ -1,9 +1,9 @@
-package ru.mirea.sipirecipes.domain.model
+package ru.mirea.sipirecipes.data.model
 
 import java.math.BigDecimal
 import java.util.*
 
-data class RecipeShort(
+data class RecipeSummary(
     val uuid: UUID,
     val name: String,
     val category: String,

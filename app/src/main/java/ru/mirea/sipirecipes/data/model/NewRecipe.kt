@@ -1,9 +1,8 @@
-package ru.mirea.sipirecipes.domain.model
+package ru.mirea.sipirecipes.data.model
 
 import java.math.BigDecimal
 
-data class RecipeInfo(
-    var uuid: String,
+data class NewRecipe(
     var category: String,
     var recipeImageUuid: String?,
     var name: String,
@@ -18,6 +17,5 @@ data class RecipeInfo(
     var fats: BigDecimal,
     var proteins: BigDecimal,
     var carbohydrates: BigDecimal,
-    var status: String,
-    var rating: Double
+    var status: String
 )

@@ -1,4 +1,4 @@
-package ru.mirea.sipirecipes.domain.model
+package ru.mirea.sipirecipes.data.model
 
 data class RecipeCategory(
     val uuid: String,
