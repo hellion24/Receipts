@@ -189,7 +189,6 @@
             android:ems="10"
             android:gravity="start|top"
             android:hint="Минуты"
-            android:inputType="numberDecimal"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/editTextVariantDescription"
