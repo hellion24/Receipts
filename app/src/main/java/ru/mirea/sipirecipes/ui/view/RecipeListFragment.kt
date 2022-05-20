@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ru.mirea.sipirecipes.R
+import ru.mirea.sipirecipes.data.network.ResultWrapper
 import ru.mirea.sipirecipes.databinding.FragmentRecipeListBinding
 import ru.mirea.sipirecipes.ui.adapter.RecipeListAdapter
 import ru.mirea.sipirecipes.ui.viewmodel.RecipeListViewModel
@@ -42,8 +44,19 @@ class RecipeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.recipesList.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+        viewModel.getRecipes()
+        viewModel.recipes.observe(viewLifecycleOwner) {
+            when (it) {
+                is ResultWrapper.Success -> {
+                    adapter.submitList(it.data)
+                }
+                is ResultWrapper.Error -> {
+                    Toast.makeText(context, it.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+                is ResultWrapper.Loading -> {
+                    // show progress
+                }
+            }
         }
     }
 
