@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.mirea.sipirecipes.BuildConfig
 import ru.mirea.sipirecipes.data.network.RecipeService
+import ru.mirea.sipirecipes.data.network.UserService
 import javax.inject.Singleton
 
 @Module
@@ -21,8 +22,14 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    fun provideUserService(retrofit: Retrofit): UserService =
+        retrofit.create(UserService::class.java)
+
+    @Singleton
+    @Provides
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
         .baseUrl(BuildConfig.BACKEND_URL_REMOTE)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
 }
