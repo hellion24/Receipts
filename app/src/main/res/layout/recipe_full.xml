@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/recipe_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toBottomOf="@id/ZAGLUSHKA" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/complexity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -43,20 +43,20 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintTop_toBottomOf="@+id/recipe_name" />
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/complexity_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="2dp"
             android:text="Сложность"
-            app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toTopOf="@+id/textView15" />
+            app:layout_constraintStart_toEndOf="@+id/complexity"
+            app:layout_constraintTop_toTopOf="@+id/complexity" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -65,10 +65,10 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editBelki" />
+            app:layout_constraintTop_toBottomOf="@+id/belki" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/instructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -77,11 +77,11 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
 
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -90,20 +90,20 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+            app:layout_constraintTop_toBottomOf="@+id/complexity" />
 
         <TextView
-            android:id="@+id/textView29"
+            android:id="@+id/priceText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="2dp"
             android:text="Стоимость"
-            app:layout_constraintStart_toEndOf="@+id/textView20"
-            app:layout_constraintTop_toTopOf="@+id/textView20" />
+            app:layout_constraintStart_toEndOf="@+id/price"
+            app:layout_constraintTop_toTopOf="@+id/price" />
 
         <TextView
-            android:id="@+id/textView27"
+            android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -112,10 +112,10 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintTop_toBottomOf="@+id/price" />
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/portions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -124,10 +124,10 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView27" />
+            app:layout_constraintTop_toBottomOf="@+id/duration" />
 
         <TextView
-            android:id="@+id/textView31"
+            android:id="@+id/bZhDKal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -136,11 +136,11 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+            app:layout_constraintTop_toBottomOf="@+id/portions" />
 
 
         <TextView
-            android:id="@+id/editTextPrice"
+            android:id="@+id/descriptionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -152,10 +152,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <TextView
-            android:id="@+id/editTextColor"
+            android:id="@+id/instructionsText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -167,22 +167,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            app:layout_constraintTop_toBottomOf="@+id/instructions" />
 
         <TextView
-            android:id="@+id/editTextVariantDescription"
+            android:id="@+id/hoursText"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="Часы"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@id/editTextVariantDescription2"
-            app:layout_constraintStart_toEndOf="@+id/textView27"
-            app:layout_constraintTop_toTopOf="@+id/textView27" />
+            app:layout_constraintEnd_toStartOf="@id/minutesText"
+            app:layout_constraintStart_toEndOf="@+id/duration"
+            app:layout_constraintTop_toTopOf="@+id/duration" />
 
         <TextView
-            android:id="@+id/editTextVariantDescription2"
+            android:id="@+id/minutesText"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="25dp"
@@ -191,11 +191,11 @@
             android:hint="Минуты"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/editTextVariantDescription"
-            app:layout_constraintTop_toTopOf="@+id/textView27" />
+            app:layout_constraintStart_toEndOf="@id/hoursText"
+            app:layout_constraintTop_toTopOf="@+id/duration" />
 
         <TextView
-            android:id="@+id/editPortions"
+            android:id="@+id/portionsText"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginEnd="50dp"
@@ -204,11 +204,11 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView30"
-            app:layout_constraintTop_toTopOf="@+id/textView30" />
+            app:layout_constraintStart_toEndOf="@+id/portions"
+            app:layout_constraintTop_toTopOf="@+id/portions" />
 
         <TextView
-            android:id="@+id/editBelki"
+            android:id="@+id/belki"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -218,12 +218,12 @@
             android:gravity="start|top"
             android:hint="Белки"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@id/editZhiri"
+            app:layout_constraintEnd_toStartOf="@id/zhiri"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+            app:layout_constraintTop_toBottomOf="@+id/bZhDKal" />
 
         <TextView
-            android:id="@+id/editZhiri"
+            android:id="@+id/zhiri"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -232,12 +232,12 @@
             android:gravity="start|top"
             android:hint="Жиры"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@id/editUglevodi"
-            app:layout_constraintStart_toEndOf="@id/editBelki"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+            app:layout_constraintEnd_toStartOf="@id/uglevodi"
+            app:layout_constraintStart_toEndOf="@id/belki"
+            app:layout_constraintTop_toBottomOf="@+id/bZhDKal" />
 
         <TextView
-            android:id="@+id/editUglevodi"
+            android:id="@+id/uglevodi"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -246,12 +246,12 @@
             android:gravity="start|top"
             android:hint="Углеводы"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@id/editKal"
-            app:layout_constraintStart_toEndOf="@id/editZhiri"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+            app:layout_constraintEnd_toStartOf="@id/kal"
+            app:layout_constraintStart_toEndOf="@id/zhiri"
+            app:layout_constraintTop_toBottomOf="@+id/bZhDKal" />
 
         <TextView
-            android:id="@+id/editKal"
+            android:id="@+id/kal"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -261,8 +261,8 @@
             android:hint="КАЛ"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/editUglevodi"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+            app:layout_constraintStart_toEndOf="@id/uglevodi"
+            app:layout_constraintTop_toBottomOf="@+id/bZhDKal" />
 
         <ProgressBar
             android:id="@+id/progressBar2"
@@ -277,14 +277,14 @@
             tools:layout_editor_absoluteY="387dp" />
 
         <Button
-            android:id="@+id/addOrUpdateModelBtn"
+            android:id="@+id/buttonZaglushka"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Заглушка (мб возврат в меню)"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextColor" />
+            app:layout_constraintTop_toBottomOf="@+id/instructionsText" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
