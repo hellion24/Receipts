@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/recipeShortFragment"
-        android:name="ru.mirea.sipirecipes.ui.view.RecipeShortFragment"
+        android:name="ru.mirea.sipirecipes.ui.view.RecipeListFragment"
         android:label="fragment_recipe_list"
         tools:layout="@layout/fragment_recipe_list" />
     <fragment

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewbinding.BuildConfig
 import dagger.hilt.android.AndroidEntryPoint
 import ru.mirea.sipirecipes.data.repository.RecipeRepository
 import ru.mirea.sipirecipes.databinding.ActivityMainBinding

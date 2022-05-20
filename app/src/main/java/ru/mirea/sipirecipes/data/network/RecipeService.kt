@@ -6,6 +6,6 @@ import ru.mirea.sipirecipes.data.model.RecipeSummary
 
 interface RecipeService {
 
-    @GET("/api/recipes")
+    @GET("/api/recipe/recipes")
     suspend fun getRecipesSummary(): Response<List<RecipeSummary>>
 }
