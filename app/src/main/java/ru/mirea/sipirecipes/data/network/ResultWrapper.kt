@@ -1,7 +1,5 @@
 package ru.mirea.sipirecipes.data.network
 
-import java.lang.Exception
-
 sealed class ResultWrapper<out T>(
     val data: T? = null,
     val errorMessage: String? = null,

@@ -3,7 +3,6 @@ package ru.mirea.sipirecipes.data.repository
 import android.util.Log
 import retrofit2.Response
 import ru.mirea.sipirecipes.data.network.ResultWrapper
-import java.lang.Exception
 
 abstract class BaseRepository(private val TAG: String) {
 

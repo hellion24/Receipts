@@ -1,6 +1,7 @@
 package ru.mirea.sipirecipes.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,12 +50,15 @@ class RecipeListFragment : Fragment() {
             when (it) {
                 is ResultWrapper.Success -> {
                     adapter.submitList(it.data)
+                    Log.d("RecipeListFragment", "Success!")
                 }
                 is ResultWrapper.Error -> {
                     Toast.makeText(context, it.errorMessage, Toast.LENGTH_SHORT).show()
+                    Log.d("RecipeListFragment", "Error")
                 }
                 is ResultWrapper.Loading -> {
                     // show progress
+                    Log.d("RecipeListFragment", "Loading...")
                 }
             }
         }

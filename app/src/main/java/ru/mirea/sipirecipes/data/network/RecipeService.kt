@@ -14,5 +14,8 @@ interface RecipeService {
     suspend fun getRecipesSummary(): Response<List<RecipeSummary>>
 
     @POST("/api/recipe/add")
-    suspend fun addRecipe(@Header("Authorization") authHeader: String, @Body recipeDto: NewRecipe): Response<RecipeSummary>
+    suspend fun addRecipe(
+        @Header("Authorization") authHeader: String,
+        @Body recipeDto: NewRecipe
+    ): Response<RecipeSummary>
 }

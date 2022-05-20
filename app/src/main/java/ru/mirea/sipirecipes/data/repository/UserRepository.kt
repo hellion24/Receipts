@@ -9,7 +9,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UserRepository @Inject constructor(private val userService: UserService) {
+class UserRepository @Inject constructor(private val userService: UserService) :
+    BaseRepository("UserRepository") {
     var user: MutableLiveData<UserEntity> = MutableLiveData()
 
     suspend fun login(dto: AuthenticationDto) {

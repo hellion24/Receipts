@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.mirea.sipirecipes.data.model.RecipeSummary
@@ -21,8 +20,8 @@ class RecipeListViewModel @Inject constructor(private val recipeRepository: Reci
     val recipes: LiveData<ResultWrapper<List<RecipeSummary>>> = _recipes
 
     fun getRecipes() = viewModelScope.launch {
-        recipeRepository.getRecipesSummary().collect { 
-            values ->  _recipes.value = values
+        recipeRepository.getRecipesSummary().collect { values ->
+            _recipes.value = values
         }
     }
 }

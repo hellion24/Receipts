@@ -1,7 +1,5 @@
 package ru.mirea.sipirecipes.data.repository
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,11 +11,14 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RecipeRepository @Inject constructor(private val recipeService: RecipeService) : BaseRepository("RecipeRepository") {
+class RecipeRepository @Inject constructor(private val recipeService: RecipeService) :
+    BaseRepository("RecipeRepository") {
     // maybe save livedata here idk ?
 
     suspend fun getRecipesSummary(): Flow<ResultWrapper<List<RecipeSummary>>> {
         return flow<ResultWrapper<List<RecipeSummary>>> {
+            // !!! assign safecall to local variable and use it if necessary, theeeeen emit !!!
+            emit(ResultWrapper.Loading())
             emit(safeApiCall { recipeService.getRecipesSummary() })
         }.flowOn(Dispatchers.IO)
     }
