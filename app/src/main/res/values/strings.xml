@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">SIPI Recipes</string>
+    <string name="logged_in_as">Текущий пользователь:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recipeTimeSample">1 ч 2 мин</string>
+    <string name="recipeTime">Время</string>
+    <string name="shortDescription">Краткое описание</string>
+    <string name="priceSample">23.1</string>
+    <string name="categorySample">Салат</string>
+    <string name="recipePrice">Цена</string>
+    <string name="recipeNameSample">Рецепт</string>
+    <string name="recipeCategory">Категория:</string>
 </resources>
