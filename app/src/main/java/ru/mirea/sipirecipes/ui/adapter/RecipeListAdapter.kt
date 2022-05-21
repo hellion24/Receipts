@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.scopes.FragmentScoped
 import ru.mirea.sipirecipes.data.model.RecipeSummary
-import ru.mirea.sipirecipes.databinding.ItemRecipeShortBinding
+import ru.mirea.sipirecipes.databinding.ItemRecipeListBinding
 import javax.inject.Inject
 
 @FragmentScoped
@@ -18,7 +18,7 @@ class RecipeListAdapter @Inject constructor() :
         viewType: Int
     ): RecipeListAdapter.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemRecipeShortBinding.inflate(inflater, parent, false)
+        val binding = ItemRecipeListBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }
 
@@ -27,7 +27,7 @@ class RecipeListAdapter @Inject constructor() :
         holder.bind(item)
     }
 
-    inner class ViewHolder(private val binding: ItemRecipeShortBinding) :
+    inner class ViewHolder(private val binding: ItemRecipeListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: RecipeSummary) {
             binding.data = data

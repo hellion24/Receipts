@@ -10,70 +10,71 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 import ru.mirea.sipirecipes.R
-import ru.mirea.sipirecipes.data.model.AuthenticationDto
 import ru.mirea.sipirecipes.data.network.ResultWrapper
-import ru.mirea.sipirecipes.databinding.LoginFragmentBinding
-import ru.mirea.sipirecipes.ui.viewmodel.LoginViewModel
+import ru.mirea.sipirecipes.databinding.RegisterFragmentBinding
+import ru.mirea.sipirecipes.ui.viewmodel.RegisterViewModel
 
 @AndroidEntryPoint
-class LoginFragment : Fragment() {
-    private var _binding: LoginFragmentBinding? = null
-    private val viewModel: LoginViewModel by viewModels()
-
-    // This property is only valid between onCreateView and onDestroyView
+class RegisterFragment : Fragment() {
+    private var _binding: RegisterFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // set binding and inflate it here
-        // also set callback here
-        _binding = LoginFragmentBinding.inflate(layoutInflater, container, false)
-        binding.loginProgress.visibility = View.GONE
+        _binding = RegisterFragmentBinding.inflate(layoutInflater, container, false)
+        binding.registerProgressBar.visibility = View.GONE
 
-        binding.loginBtn.setOnClickListener {
-            if (binding.login.text.toString().isNotEmpty() && binding.password.text.isNotEmpty()) {
-                viewModel.performLogin(
-                    AuthenticationDto(
-                        binding.login.text.toString(),
-                        binding.password.text.toString()
-                    )
+        binding.signUpBtn.setOnClickListener {
+            if (
+                binding.editTextLogin.text.toString().isNotEmpty() &&
+                binding.editTextPassword.text.toString().isNotEmpty() &&
+                binding.editTextRepeatPassword.text.toString().isNotEmpty() &&
+                binding.editTextFirstName.text.toString().isNotEmpty() &&
+                binding.editTextLastName.text.toString().isNotEmpty()
+            ) {
+                viewModel.performRegistration(
+                    binding.editTextLogin.text.toString(),
+                    binding.editTextPassword.text.toString(),
+                    binding.editTextFirstName.text.toString(),
+                    binding.editTextLastName.text.toString()
                 )
             } else {
                 Toast.makeText(
                     context,
-                    "Введите логин и пароль!",
+                    "Ошибка ввода данных",
                     Toast.LENGTH_SHORT
                 ).show()
             }
         }
 
-        // return inflated binding
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loggedInUser.observe(viewLifecycleOwner) {
+        viewModel.registeredUserResult.observe(viewLifecycleOwner) {
             when (it) {
                 is ResultWrapper.Success -> {
                     // redirect to home here
-                    binding.loginProgress.visibility = View.GONE
+                    binding.registerProgressBar.visibility = View.GONE
                     getView()?.let { itView ->
                         Navigation.findNavController(itView)
-                            .navigate(R.id.action_nav_login_to_recipeShortFragment)
+                            .navigate(R.id.action_nav_register_to_recipeShortFragment)
                     }
                 }
                 is ResultWrapper.Error -> {
-                    binding.loginProgress.visibility = View.GONE
+                    binding.registerProgressBar.visibility = View.GONE
                     Toast.makeText(context, it.errorMessage, Toast.LENGTH_SHORT).show()
                 }
                 is ResultWrapper.Loading -> {
                     // show progress
-                    binding.loginProgress.visibility = View.VISIBLE
+                    binding.registerProgressBar.visibility = View.VISIBLE
                 }
             }
         }

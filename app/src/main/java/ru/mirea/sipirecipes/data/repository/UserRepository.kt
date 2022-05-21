@@ -17,23 +17,43 @@ import javax.inject.Singleton
 class UserRepository @Inject constructor(private val userService: UserService) :
     BaseRepository("UserRepository") {
     var user: MutableLiveData<UserEntity> = MutableLiveData()
-    var isPrivileged: MutableLiveData<Boolean> = MutableLiveData()
+    var isPrivileged: MutableLiveData<Boolean> = MutableLiveData(false)
+    var isLoggedIn: MutableLiveData<Boolean> = MutableLiveData(false)
 
     suspend fun login(dto: AuthenticationDto): Flow<ResultWrapper<UserEntity>> {
         return flow {
             emit(ResultWrapper.Loading())
             val result = safeApiCall { userService.login(dto) }
             if (result.isSuccessful()) {
-                user.postValue(result.data)
-                isPrivileged.postValue(result.data!!.status == UserRole.ADMIN.toString())
+                onSuccessfulLogin(result.data!!, dto.password)
                 Log.d(TAG, "Logged in as: ${result.data.login}")
             }
             emit(result)
         }
     }
 
+    suspend fun register(userDto: UserEntity): Flow<ResultWrapper<UserEntity>> {
+        return flow {
+            emit(ResultWrapper.Loading())
+            val result = safeApiCall { userService.register(userDto) }
+            if (result.isSuccessful()) {
+                onSuccessfulLogin(result.data!!, userDto.password)
+                Log.d(TAG, "Logged in as: ${result.data.login}")
+            }
+            emit(result)
+        }
+    }
+
+    private fun onSuccessfulLogin(userToLogin: UserEntity, enteredPassword: String) {
+        userToLogin.password = enteredPassword
+        user.postValue(userToLogin)
+        isLoggedIn.postValue(true)
+        isPrivileged.postValue(userToLogin.userRole == UserRole.ADMIN)
+    }
+
     fun logout() {
-        isPrivileged.postValue(null)
+        isPrivileged.postValue(false)
+        isLoggedIn.postValue(false)
         user.postValue(null)
     }
 

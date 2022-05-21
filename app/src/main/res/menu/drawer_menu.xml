@@ -9,10 +9,10 @@
                     android:id="@+id/nav_login"
                     android:title="Логин"
                     android:icon="@drawable/ic_baseline_login_24"/>
-<!--                <item-->
-<!--                    android:id="@+id/nav_register"-->
-<!--                    android:title="Регистрация"-->
-<!--                    android:icon="@drawable/ic_baseline_login_24"/>-->
+                <item
+                    android:id="@+id/nav_register"
+                    android:title="Регистрация"
+                    android:icon="@drawable/ic_baseline_login_24"/>
 <!--                <item-->
 <!--                    android:id="@+id/nav_logout"-->
 <!--                    android:title="Выход"-->
@@ -26,9 +26,9 @@
         android:title="Каталог">
         <menu>
             <group>
-<!--                <item-->
-<!--                    android:id="@+id/menu_action_refresh_catalogue"-->
-<!--                    android:title="Обновить данные" />-->
+                <item
+                    android:id="@+id/nav_add_recipe"
+                    android:title="Добавить Рецепт" />
                 <item
                     android:id="@+id/recipeShortFragment"
                     android:title="Список рецептов" />

@@ -17,5 +17,5 @@ data class NewRecipe(
     var fats: BigDecimal,
     var proteins: BigDecimal,
     var carbohydrates: BigDecimal,
-    var status: String
+    var status: RecipeStatus
 )

@@ -18,6 +18,6 @@ data class RecipeInfo(
     var fats: BigDecimal,
     var proteins: BigDecimal,
     var carbohydrates: BigDecimal,
-    var status: String,
+    var status: RecipeStatus,
     var rating: Double
 )

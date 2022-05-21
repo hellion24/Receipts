@@ -9,10 +9,28 @@
         android:id="@+id/recipeShortFragment"
         android:name="ru.mirea.sipirecipes.ui.view.RecipeListFragment"
         android:label="fragment_recipe_list"
-        tools:layout="@layout/fragment_recipe_list" />
+        tools:layout="@layout/recipe_list_fragment" />
     <fragment
         android:id="@+id/nav_login"
         android:name="ru.mirea.sipirecipes.ui.view.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_nav_login_to_recipeShortFragment"
+            app:destination="@id/recipeShortFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_register"
+        android:name="ru.mirea.sipirecipes.ui.view.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/register_fragment">
+        <action
+            android:id="@+id/action_nav_register_to_recipeShortFragment"
+            app:destination="@id/recipeShortFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_add_recipe"
+        android:name="ru.mirea.sipirecipes.ui.view.AddRecipeFragment"
+        android:label="add_recipe_fragment"
+        tools:layout="@layout/add_recipe_fragment" />
 </navigation>

@@ -16,6 +16,7 @@ abstract class BaseRepository(protected val TAG: String) {
                 }
             }
             Log.d(TAG, "Call failed with ${response.message()}")
+            Log.d(TAG, "Response: $response")
             return formatError(" ${response.code()} ${response.message()}")
         } catch (exception: Exception) {
             exception.message?.let {

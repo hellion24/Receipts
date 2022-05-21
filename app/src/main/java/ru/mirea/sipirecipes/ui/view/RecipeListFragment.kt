@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ru.mirea.sipirecipes.R
 import ru.mirea.sipirecipes.data.network.ResultWrapper
-import ru.mirea.sipirecipes.databinding.FragmentRecipeListBinding
+import ru.mirea.sipirecipes.databinding.RecipeListFragmentBinding
 import ru.mirea.sipirecipes.ui.adapter.RecipeListAdapter
 import ru.mirea.sipirecipes.ui.viewmodel.RecipeListViewModel
 import javax.inject.Inject
@@ -24,7 +24,7 @@ class RecipeListFragment : Fragment() {
     @Inject
     lateinit var adapter: RecipeListAdapter
 
-    private var _binding: FragmentRecipeListBinding? = null
+    private var _binding: RecipeListFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -33,7 +33,7 @@ class RecipeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_recipe_list, container, false
+            inflater, R.layout.recipe_list_fragment, container, false
         )
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
