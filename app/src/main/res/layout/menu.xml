@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/pomidor"/>
 
     <ImageButton
-        android:id="@+id/dann5"
+        android:id="@+id/loginBtn"
         android:layout_width="350dp"
         android:layout_height="90dp"
         android:scaleType="fitXY"
@@ -39,10 +39,10 @@
         android:text="Каталог рецептов"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/dann5"
-        app:layout_constraintEnd_toEndOf="@+id/dann5"
-        app:layout_constraintStart_toStartOf="@+id/dann5"
-        app:layout_constraintTop_toTopOf="@+id/dann5"/>
+        app:layout_constraintBottom_toBottomOf="@+id/loginBtn"
+        app:layout_constraintEnd_toEndOf="@+id/loginBtn"
+        app:layout_constraintStart_toStartOf="@+id/loginBtn"
+        app:layout_constraintTop_toTopOf="@+id/loginBtn"/>
 
     <ImageButton
         android:id="@+id/dann6"
@@ -53,7 +53,7 @@
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dann5"
+        app:layout_constraintTop_toBottomOf="@id/loginBtn"
         app:layout_constraintBottom_toTopOf="@id/dann7"
         android:layout_marginTop="20dp" />
 

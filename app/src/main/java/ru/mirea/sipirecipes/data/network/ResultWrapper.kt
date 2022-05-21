@@ -10,4 +10,8 @@ sealed class ResultWrapper<out T>(
     class Error<T>(errorMessage: String, data: T? = null) : ResultWrapper<T>(data, errorMessage)
 
     class Loading<T> : ResultWrapper<T>()
+
+    fun isSuccessful(): Boolean {
+        return data != null && exception == null && errorMessage == null
+    }
 }

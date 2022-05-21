@@ -4,7 +4,7 @@ import android.util.Log
 import retrofit2.Response
 import ru.mirea.sipirecipes.data.network.ResultWrapper
 
-abstract class BaseRepository(private val TAG: String) {
+abstract class BaseRepository(protected val TAG: String) {
 
     protected suspend fun <T> safeApiCall(call: suspend () -> Response<T>): ResultWrapper<T> {
         try {
