@@ -7,11 +7,16 @@
         <variable
             name="data"
             type="ru.mirea.sipirecipes.data.model.RecipeSummary" />
+
+        <variable
+            name="clickListener"
+            type="ru.mirea.sipirecipes.ui.adapter.RecipeListAdapter.ClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
         layout_height=""
         layout_width=""
+        android:onClick="@{() -> clickListener.onClick(data)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"

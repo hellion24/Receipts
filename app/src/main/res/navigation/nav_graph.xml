@@ -41,5 +41,5 @@
         android:id="@+id/recipeDetailsFragment"
         android:name="ru.mirea.sipirecipes.ui.view.RecipeDetailsFragment"
         android:label="Описание Рецепта"
-        tools:layout="@layout/recipe_details_fragment" />
+        tools:layout="@layout/recipe_details_old" />
 </navigation>

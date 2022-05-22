@@ -11,7 +11,7 @@ import ru.mirea.sipirecipes.databinding.ItemRecipeListBinding
 import javax.inject.Inject
 
 @FragmentScoped
-class RecipeListAdapter @Inject constructor() :
+class RecipeListAdapter @Inject constructor(val clickListener: ClickListener) :
     ListAdapter<RecipeSummary, RecipeListAdapter.ViewHolder>(RecipeListDiffCallback()) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -24,14 +24,24 @@ class RecipeListAdapter @Inject constructor() :
 
     override fun onBindViewHolder(holder: RecipeListAdapter.ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
     inner class ViewHolder(private val binding: ItemRecipeListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: RecipeSummary) {
+        fun bind(data: RecipeSummary, clickListener: ClickListener) {
             binding.data = data
             binding.executePendingBindings()
+            binding.clickListener = clickListener
+        }
+    }
+
+    class ClickListener @Inject constructor() {
+
+        var onItemClick: ((RecipeSummary) -> Unit)? = null
+
+        fun onClick(data: RecipeSummary) {
+            onItemClick?.invoke(data)
         }
     }
 
