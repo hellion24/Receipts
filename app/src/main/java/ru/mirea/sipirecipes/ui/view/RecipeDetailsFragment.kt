@@ -30,6 +30,7 @@ class RecipeDetailsFragment : Fragment() {
         _binding = DataBindingUtil.inflate(
             inflater, R.layout.recipe_details_fragment, container, false
         )
+        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         recipeUuid = arguments?.getString("recipeUuid")
 
@@ -39,6 +40,11 @@ class RecipeDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setObservers()
+        viewModel.getRecipeDetails(recipeUuid!!)
+    }
+
+    private fun setObservers() {
         viewModel.recipeDetailsResult.observe(viewLifecycleOwner) {
             when (it) {
                 is ResultWrapper.Loading -> {
@@ -53,7 +59,6 @@ class RecipeDetailsFragment : Fragment() {
                 }
             }
         }
-        viewModel.getRecipeDetails(recipeUuid!!)
     }
 
     override fun onDestroy() {

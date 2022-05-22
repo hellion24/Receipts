@@ -7,6 +7,10 @@
         <variable
             name="data"
             type="ru.mirea.sipirecipes.data.model.RecipeInfo" />
+
+        <variable
+            name="viewModel"
+            type="ru.mirea.sipirecipes.ui.viewmodel.RecipeDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -286,6 +290,20 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabEditRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:clickable="true"
+            android:visibility="@{viewModel.isUserPrivileged()}"
+            android:contentDescription="@string/fabEditRecipe"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_baseline_edit_24"
+            android:focusable="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -20,6 +20,13 @@ interface RecipeService {
         @Body recipeDto: NewRecipe
     ): Response<RecipeSummary>
 
+    @POST("/api/recipe/update{uuid}")
+    suspend fun updateRecipe(
+        @Header("Authorization") authHeader: String,
+        @Path("uuid") uuid: String,
+        @Body recipeDto: NewRecipe
+    ): Response<RecipeSummary>
+
     @POST("/api/recipe/addFavorite/{uuid")
     suspend fun addToFavorite(
         @Header("Authorization") authHeader: String,
@@ -31,4 +38,10 @@ interface RecipeService {
         @Header("Authorization") authHeader: String,
         @Path("uuid") uuid: String
     )
+
+    @DELETE("/api/recipe/delete/{uuid}")
+    suspend fun deleteRecipe(
+        @Header("Authorization") authHeader: String,
+        @Path("uuid") uuid: String
+    ): Response<Unit>
 }

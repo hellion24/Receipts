@@ -46,4 +46,27 @@ class RecipeRepository @Inject constructor(
             emit(safeApiCall { recipeService.getRecipeInfo(uuid) })
         }
     }
+
+    suspend fun updateRecipe(
+        uuid: String,
+        toUpdate: NewRecipe
+    ): Flow<ResultWrapper<RecipeSummary>> {
+        return flow {
+            emit(ResultWrapper.Loading())
+            emit(safeApiCall {
+                recipeService.updateRecipe(
+                    userRepository.getAuthHeader(),
+                    uuid,
+                    toUpdate
+                )
+            })
+        }
+    }
+
+    suspend fun deleteRecipe(uuid: String): Flow<ResultWrapper<Unit>> {
+        return flow {
+            emit(ResultWrapper.Loading())
+            emit(safeApiCall { recipeService.deleteRecipe(userRepository.getAuthHeader(), uuid) })
+        }
+    }
 }
