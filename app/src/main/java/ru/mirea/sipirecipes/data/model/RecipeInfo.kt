@@ -20,4 +20,21 @@ data class RecipeInfo(
     var carbohydrates: BigDecimal,
     var status: RecipeStatus,
     var rating: Double
-)
+) {
+    companion object {
+        fun getNutritionDetails(recipe: RecipeInfo): String {
+            return "Калории: ${recipe.calories}\n" +
+                    "Белки: ${recipe.proteins}\n" +
+                    "Жиры: ${recipe.fats}\n" +
+                    "Углеводы: ${recipe.carbohydrates}"
+        }
+
+        fun getFormattedTime(recipe: RecipeInfo): String {
+            return if (recipe.durationHours == 0) {
+                "${recipe.durationMinutes} мин."
+            } else {
+                "${recipe.durationHours} час. ${recipe.durationMinutes} мин."
+            }
+        }
+    }
+}

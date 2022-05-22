@@ -9,7 +9,11 @@
         android:id="@+id/recipeShortFragment"
         android:name="ru.mirea.sipirecipes.ui.view.RecipeListFragment"
         android:label="Список рецептов"
-        tools:layout="@layout/recipe_list_fragment" />
+        tools:layout="@layout/recipe_list_fragment" >
+        <action
+            android:id="@+id/action_recipeShortFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_login"
         android:name="ru.mirea.sipirecipes.ui.view.LoginFragment"
@@ -33,4 +37,9 @@
         android:name="ru.mirea.sipirecipes.ui.view.AddRecipeFragment"
         android:label="Добавит рецепт"
         tools:layout="@layout/add_recipe_fragment" />
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="ru.mirea.sipirecipes.ui.view.RecipeDetailsFragment"
+        android:label="Описание Рецепта"
+        tools:layout="@layout/recipe_details_fragment" />
 </navigation>

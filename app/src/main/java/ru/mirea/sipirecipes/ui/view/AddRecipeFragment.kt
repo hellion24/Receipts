@@ -101,7 +101,7 @@ class AddRecipeFragment : Fragment() {
                 checkBigDecimalConversion(binding.etCarbohydrates.text.toString()) &&
                 checkBigDecimalConversion(binding.etProteins.text.toString()) &&
                 checkIntConversion(binding.etComplexity.text.toString()) &&
-                checkIntConversion(binding.etHours.text.toString()) &&
+                checkIntConversion(binding.etHours.text.toString(), false) &&
                 checkIntConversion(binding.etMinutes.text.toString())
     }
 

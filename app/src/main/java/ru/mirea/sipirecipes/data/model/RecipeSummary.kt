@@ -11,4 +11,14 @@ data class RecipeSummary(
     val durationHours: Int,
     val durationMinutes: Int,
     val rating: Double
-)
+) {
+    companion object {
+        fun getFormattedTime(recipe: RecipeSummary): String {
+            return if (recipe.durationHours == 0) {
+                "${recipe.durationMinutes} мин."
+            } else {
+                "${recipe.durationHours} час. ${recipe.durationMinutes} мин."
+            }
+        }
+    }
+}

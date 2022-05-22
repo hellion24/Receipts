@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:text="@{data.durationHours + ` hrs ` + data.durationMinutes + ` min`}"
+                android:text="@{data.Companion.getFormattedTime(data)}"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
