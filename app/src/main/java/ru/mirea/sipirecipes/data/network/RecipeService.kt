@@ -20,7 +20,7 @@ interface RecipeService {
         @Body recipeDto: NewRecipe
     ): Response<RecipeSummary>
 
-    @POST("/api/recipe/update{uuid}")
+    @PUT("/api/recipe/update/{uuid}")
     suspend fun updateRecipe(
         @Header("Authorization") authHeader: String,
         @Path("uuid") uuid: String,

@@ -5,7 +5,7 @@
     android:id="@+id/addVariantScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.AddRecipeFragment"
+    tools:context=".ui.view.UploadRecipeFragment"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout

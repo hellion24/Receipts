@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.mirea.sipirecipes.data.model.NewRecipe
+import ru.mirea.sipirecipes.data.model.RecipeInfo
 import ru.mirea.sipirecipes.data.model.RecipeStatus
 import ru.mirea.sipirecipes.data.model.RecipeSummary
 import ru.mirea.sipirecipes.data.network.ResultWrapper
@@ -19,10 +20,16 @@ import javax.inject.Inject
 class AddRecipeViewModel @Inject constructor(private val recipeRepository: RecipeRepository) :
     ViewModel() {
 
-    private val _addRecipeResult: MutableLiveData<ResultWrapper<RecipeSummary>> = MutableLiveData()
-    val addRecipeResult: LiveData<ResultWrapper<RecipeSummary>> = _addRecipeResult
+    private val _uploadRecipeResult: MutableLiveData<ResultWrapper<RecipeSummary>> =
+        MutableLiveData()
+    val uploadRecipeResult: LiveData<ResultWrapper<RecipeSummary>> = _uploadRecipeResult
 
-    fun addRecipe(
+    private val _loadRecipeResult: MutableLiveData<ResultWrapper<RecipeInfo>> = MutableLiveData()
+    val loadRecipeResult: LiveData<ResultWrapper<RecipeInfo>> = _loadRecipeResult
+
+    fun addOrUpdateRecipe(
+        updateRecipe: Boolean,
+        uuidToUpdate: String?,
         category: String,
         name: String,
         complexity: Int,
@@ -37,7 +44,7 @@ class AddRecipeViewModel @Inject constructor(private val recipeRepository: Recip
         proteins: BigDecimal,
         carbohydrates: BigDecimal,
     ) {
-        val newRecipe = NewRecipe(
+        val recipeDto = NewRecipe(
             category,
             null,
             name,
@@ -54,9 +61,25 @@ class AddRecipeViewModel @Inject constructor(private val recipeRepository: Recip
             carbohydrates,
             RecipeStatus.APPROVED // ignored on server
         )
+        if (updateRecipe) {
+            viewModelScope.launch {
+                recipeRepository.updateRecipe(uuidToUpdate!!, recipeDto).collect { updatedRecipe ->
+                    _uploadRecipeResult.value = updatedRecipe
+                }
+            }
+        } else {
+            viewModelScope.launch {
+                recipeRepository.addRecipe(recipeDto).collect { addedRecipe ->
+                    _uploadRecipeResult.value = addedRecipe
+                }
+            }
+        }
+    }
+
+    fun loadRecipeInfo(uuid: String) {
         viewModelScope.launch {
-            recipeRepository.addRecipe(newRecipe).collect { value ->
-                _addRecipeResult.value = value
+            recipeRepository.getRecipeDetails(uuid).collect { loadedRecipe ->
+                _loadRecipeResult.value = loadedRecipe
             }
         }
     }

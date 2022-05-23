@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 import ru.mirea.sipirecipes.R
 import ru.mirea.sipirecipes.data.network.ResultWrapper
 import ru.mirea.sipirecipes.databinding.RecipeDetailsFragmentBinding
 import ru.mirea.sipirecipes.ui.viewmodel.RecipeDetailsViewModel
+import ru.mirea.sipirecipes.utility.Constants
 
 @AndroidEntryPoint
 class RecipeDetailsFragment : Fragment() {
@@ -32,13 +35,20 @@ class RecipeDetailsFragment : Fragment() {
         )
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        recipeUuid = arguments?.getString("recipeUuid")
+        recipeUuid = arguments?.getString(Constants.RECIPE_UUID_DETAILS_TAG)
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.fabEditRecipe.setOnClickListener {
+            val bundle =
+                bundleOf(Constants.RECIPE_UUID_UPDATE_TAG to viewModel.recipeDetailsResult.value?.data?.uuid.toString())
+            Navigation.findNavController(view)
+                .navigate(R.id.action_recipeDetailsFragment_to_nav_add_recipe, bundle)
+        }
 
         setObservers()
         viewModel.getRecipeDetails(recipeUuid!!)

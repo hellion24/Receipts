@@ -17,6 +17,7 @@ import ru.mirea.sipirecipes.data.network.ResultWrapper
 import ru.mirea.sipirecipes.databinding.RecipeListFragmentBinding
 import ru.mirea.sipirecipes.ui.adapter.RecipeListAdapter
 import ru.mirea.sipirecipes.ui.viewmodel.RecipeListViewModel
+import ru.mirea.sipirecipes.utility.Constants
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -48,7 +49,7 @@ class RecipeListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter.clickListener.onItemClick = {
-            val bundle = bundleOf("recipeUuid" to it.uuid.toString())
+            val bundle = bundleOf(Constants.RECIPE_UUID_DETAILS_TAG to it.uuid.toString())
             Navigation.findNavController(view)
                 .navigate(R.id.action_recipeShortFragment_to_recipeDetailsFragment, bundle)
         }
