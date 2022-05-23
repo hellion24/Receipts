@@ -7,7 +7,4 @@
     <item
         android:id="@+id/menu_action_logout"
         android:title="Выход"/>
-    <item
-        android:id="@+id/menu_action_refresh"
-        android:title="Тест"/>
 </menu>

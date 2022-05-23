@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.mirea.sipirecipes.data.model.RecipeInfo
 import ru.mirea.sipirecipes.data.network.ResultWrapper
 import ru.mirea.sipirecipes.databinding.UploadRecipeFragmentBinding
-import ru.mirea.sipirecipes.ui.viewmodel.AddRecipeViewModel
+import ru.mirea.sipirecipes.ui.viewmodel.UploadRecipeViewModel
 import ru.mirea.sipirecipes.utility.Constants
 import java.math.BigDecimal
 
@@ -21,7 +21,7 @@ class UploadRecipeFragment : Fragment() {
     private var _binding: UploadRecipeFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: AddRecipeViewModel by viewModels()
+    private val viewModel: UploadRecipeViewModel by viewModels()
 
     private var recievedUuid: String? = null
 

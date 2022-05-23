@@ -13,10 +13,6 @@
                     android:id="@+id/nav_register"
                     android:title="Регистрация"
                     android:icon="@drawable/ic_baseline_login_24"/>
-<!--                <item-->
-<!--                    android:id="@+id/nav_logout"-->
-<!--                    android:title="Выход"-->
-<!--                    android:icon="@drawable/ic_baseline_perm_identity_24"/>-->
             </group>
         </menu>
     </item>
@@ -27,10 +23,10 @@
         <menu>
             <group>
                 <item
-                    android:id="@+id/nav_add_recipe"
+                    android:id="@+id/nav_upload_recipe"
                     android:title="Добавить Рецепт" />
                 <item
-                    android:id="@+id/recipeShortFragment"
+                    android:id="@+id/recipe_list_fragment"
                     android:title="Список рецептов" />
             </group>
         </menu>

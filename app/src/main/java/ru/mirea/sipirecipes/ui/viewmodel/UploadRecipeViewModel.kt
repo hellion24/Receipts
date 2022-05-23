@@ -13,11 +13,15 @@ import ru.mirea.sipirecipes.data.model.RecipeStatus
 import ru.mirea.sipirecipes.data.model.RecipeSummary
 import ru.mirea.sipirecipes.data.network.ResultWrapper
 import ru.mirea.sipirecipes.data.repository.RecipeRepository
+import ru.mirea.sipirecipes.data.repository.UserRepository
 import java.math.BigDecimal
 import javax.inject.Inject
 
 @HiltViewModel
-class AddRecipeViewModel @Inject constructor(private val recipeRepository: RecipeRepository) :
+class UploadRecipeViewModel @Inject constructor(
+    private val recipeRepository: RecipeRepository,
+    private val userRepository: UserRepository
+) :
     ViewModel() {
 
     private val _uploadRecipeResult: MutableLiveData<ResultWrapper<RecipeSummary>> =
