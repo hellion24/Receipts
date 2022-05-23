@@ -52,6 +52,7 @@ class UserRepository @Inject constructor(private val userService: UserService) :
     }
 
     fun logout() {
+        Log.d(TAG, "Logging out user: ${user.value!!.login}")
         isPrivileged.postValue(false)
         isLoggedIn.postValue(false)
         user.postValue(null)

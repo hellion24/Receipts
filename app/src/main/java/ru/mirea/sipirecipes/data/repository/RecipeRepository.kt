@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import ru.mirea.sipirecipes.data.model.NewRecipe
+import ru.mirea.sipirecipes.data.model.RecipeInfo
 import ru.mirea.sipirecipes.data.model.RecipeSummary
 import ru.mirea.sipirecipes.data.network.RecipeService
 import ru.mirea.sipirecipes.data.network.ResultWrapper
@@ -15,13 +16,11 @@ import javax.inject.Singleton
 class RecipeRepository @Inject constructor(
     private val recipeService: RecipeService,
     private val userRepository: UserRepository
-) :
-    BaseRepository("RecipeRepository") {
+) : BaseRepository("RecipeRepository") {
     // maybe save livedata here idk ?
 
     suspend fun getRecipesSummary(): Flow<ResultWrapper<List<RecipeSummary>>> {
         return flow<ResultWrapper<List<RecipeSummary>>> {
-            // !!! assign safecall to local variable and use it if necessary, theeeeen emit !!!
             emit(ResultWrapper.Loading())
             emit(safeApiCall { recipeService.getRecipesSummary() })
         }.flowOn(Dispatchers.IO)
@@ -38,6 +37,36 @@ class RecipeRepository @Inject constructor(
                     )
                 }
             )
+        }
+    }
+
+    suspend fun getRecipeDetails(uuid: String): Flow<ResultWrapper<RecipeInfo>> {
+        return flow {
+            emit(ResultWrapper.Loading())
+            emit(safeApiCall { recipeService.getRecipeInfo(uuid) })
+        }
+    }
+
+    suspend fun updateRecipe(
+        uuid: String,
+        toUpdate: NewRecipe
+    ): Flow<ResultWrapper<RecipeSummary>> {
+        return flow {
+            emit(ResultWrapper.Loading())
+            emit(safeApiCall {
+                recipeService.updateRecipe(
+                    userRepository.getAuthHeader(),
+                    uuid,
+                    toUpdate
+                )
+            })
+        }
+    }
+
+    suspend fun deleteRecipe(uuid: String): Flow<ResultWrapper<Unit>> {
+        return flow {
+            emit(ResultWrapper.Loading())
+            emit(safeApiCall { recipeService.deleteRecipe(userRepository.getAuthHeader(), uuid) })
         }
     }
 }

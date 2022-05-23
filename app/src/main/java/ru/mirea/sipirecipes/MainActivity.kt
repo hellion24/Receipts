@@ -1,6 +1,7 @@
 package ru.mirea.sipirecipes
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -18,6 +19,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val viewModel: MainViewModel by viewModels()
+
+    companion object {
+        const val TAG = "Main Activity"
+    }
 
     @Inject
     lateinit var recipeRepository: RecipeRepository
@@ -38,6 +43,21 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
 
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_action_logout -> {
+                    userRepository.logout()
+                    // Recipe Addition/Editing should be accessible ONLY to logged in users
+                    if (navController.currentDestination?.id == R.id.nav_upload_recipe) {
+                        Log.d(TAG, "Navigating to recipe list.")
+                        navController.popBackStack()
+                    }
+                    return@setOnMenuItemClickListener true
+                }
+            }
+            false
+        }
+
         setObservers()
 
         setContentView(binding.root)
@@ -45,14 +65,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setObservers() {
         viewModel.isUserPresent.observe(this) {
-            if (it) {
+            if (it) { // user logged in
                 binding.navView.menu.findItem(R.id.nav_login).isVisible = false
                 binding.navView.menu.findItem(R.id.nav_register).isVisible = false
-                binding.navView.menu.findItem(R.id.nav_add_recipe).isVisible = true
-            } else {
+                binding.navView.menu.findItem(R.id.nav_upload_recipe).isVisible = true
+                binding.toolbar.menu.findItem(R.id.menu_action_logout).isVisible = true
+            } else { // NO user logged in
                 binding.navView.menu.findItem(R.id.nav_login).isVisible = true
                 binding.navView.menu.findItem(R.id.nav_register).isVisible = true
-                binding.navView.menu.findItem(R.id.nav_add_recipe).isVisible = false
+                binding.navView.menu.findItem(R.id.nav_upload_recipe).isVisible = false
+                binding.toolbar.menu.findItem(R.id.menu_action_logout).isVisible = false
             }
         }
     }
