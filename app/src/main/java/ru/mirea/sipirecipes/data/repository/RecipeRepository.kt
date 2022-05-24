@@ -37,14 +37,14 @@ class RecipeRepository @Inject constructor(
                     )
                 }
             )
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     suspend fun getRecipeDetails(uuid: String): Flow<ResultWrapper<RecipeInfo>> {
         return flow {
             emit(ResultWrapper.Loading())
             emit(safeApiCall { recipeService.getRecipeInfo(uuid) })
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     suspend fun updateRecipe(
@@ -60,13 +60,13 @@ class RecipeRepository @Inject constructor(
                     toUpdate
                 )
             })
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     suspend fun deleteRecipe(uuid: String): Flow<ResultWrapper<Unit>> {
         return flow {
             emit(ResultWrapper.Loading())
             emit(safeApiCall { recipeService.deleteRecipe(userRepository.getAuthHeader(), uuid) })
-        }
+        }.flowOn(Dispatchers.IO)
     }
 }
