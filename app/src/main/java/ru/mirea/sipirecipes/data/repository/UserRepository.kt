@@ -3,8 +3,10 @@ package ru.mirea.sipirecipes.data.repository
 import android.util.Base64
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import ru.mirea.sipirecipes.data.model.AuthenticationDto
 import ru.mirea.sipirecipes.data.model.UserEntity
 import ru.mirea.sipirecipes.data.model.UserRole
@@ -29,7 +31,7 @@ class UserRepository @Inject constructor(private val userService: UserService) :
                 Log.d(TAG, "Logged in as: ${result.data.login}")
             }
             emit(result)
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     suspend fun register(userDto: UserEntity): Flow<ResultWrapper<UserEntity>> {
@@ -41,7 +43,7 @@ class UserRepository @Inject constructor(private val userService: UserService) :
                 Log.d(TAG, "Logged in as: ${result.data.login}")
             }
             emit(result)
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     private fun onSuccessfulLogin(userToLogin: UserEntity, enteredPassword: String) {
