@@ -23,12 +23,26 @@ class RecipeDetailsViewModel @Inject constructor(
     private val _recipeDetailsResult: MutableLiveData<ResultWrapper<RecipeInfo>> = MutableLiveData()
     val recipeDetailsResult: LiveData<ResultWrapper<RecipeInfo>> = _recipeDetailsResult
 
+    private val _deleteRecipeResult: MutableLiveData<ResultWrapper<Unit>> = MutableLiveData()
+    val deleteRecipeResult: LiveData<ResultWrapper<Unit>> = _deleteRecipeResult
+
     val isUserPrivileged: LiveData<Boolean> = userRepository.isPrivileged
 
     fun getRecipeDetails(uuid: String) {
         viewModelScope.launch {
             recipeRepository.getRecipeDetails(uuid).collect { callResult ->
                 _recipeDetailsResult.value = callResult
+            }
+        }
+    }
+
+    fun deleteRecipe(uuid: String) {
+        if (deleteRecipeResult.value is ResultWrapper.Loading) {
+            return
+        }
+        viewModelScope.launch {
+            recipeRepository.deleteRecipe(uuid).collect { callResult ->
+                _deleteRecipeResult.value = callResult
             }
         }
     }

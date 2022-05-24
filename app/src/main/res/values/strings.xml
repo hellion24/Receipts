@@ -12,4 +12,5 @@
     <string name="recipeNameSample">Рецепт</string>
     <string name="recipeCategory">Категория:</string>
     <string name="fabEditRecipe">Edit Recipe</string>
+    <string name="delete_recipe">Delete Decipe</string>
 </resources>
