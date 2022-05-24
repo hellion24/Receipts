@@ -5,8 +5,7 @@
     android:id="@+id/addVariantScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.UploadRecipeFragment"
-    >
+    tools:context=".ui.view.UploadRecipeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout2"
@@ -92,7 +91,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etInstructions" />
+            app:layout_constraintTop_toBottomOf="@+id/scrolll" />
 
         <TextView
             android:id="@+id/duration"
@@ -177,23 +176,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toBottomOf="@+id/description" />
 
-        <EditText
-            android:id="@+id/etInstructions"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrolll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:ems="10"
-            android:hint="Полный текст инструкций"
-            android:inputType="text"
-            android:minHeight="48dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="40dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instructions" />
+            app:layout_constraintTop_toBottomOf="@+id/instructions">
+
+            <EditText
+                android:id="@+id/etInstructions"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="#F1FDDC"
+                android:ems="10"
+                android:gravity="top|left"
+                android:hint="Полный текст инструкций"
+                android:inputType="textMultiLine"
+                android:minHeight="800dp"
+                android:padding="10dp" />
+
+        </androidx.core.widget.NestedScrollView>
 
         <EditText
             android:id="@+id/etPrice"

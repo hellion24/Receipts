@@ -50,11 +50,15 @@ class RecipeDetailsFragment : Fragment() {
                 .navigate(R.id.action_recipeDetailsFragment_to_nav_add_recipe, bundle)
         }
 
-        setObservers()
+        binding.fabDeleteRecipe.setOnClickListener {
+            viewModel.deleteRecipe(recipeUuid!!)
+        }
+
+        setObservers(view)
         viewModel.getRecipeDetails(recipeUuid!!)
     }
 
-    private fun setObservers() {
+    private fun setObservers(view: View) {
         viewModel.recipeDetailsResult.observe(viewLifecycleOwner) {
             when (it) {
                 is ResultWrapper.Loading -> {
@@ -66,6 +70,21 @@ class RecipeDetailsFragment : Fragment() {
                 }
                 is ResultWrapper.Success -> {
                     binding.data = it.data
+                }
+            }
+        }
+
+        viewModel.deleteRecipeResult.observe(viewLifecycleOwner) {
+            when (it) {
+                is ResultWrapper.Loading -> {
+                    // no progress bar :(
+                }
+                is ResultWrapper.Error -> {
+                    Toast.makeText(context, it.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+                is ResultWrapper.Success -> {
+                    Toast.makeText(context, "Рецепт удален.", Toast.LENGTH_SHORT).show()
+                    Navigation.findNavController(view).popBackStack()
                 }
             }
         }

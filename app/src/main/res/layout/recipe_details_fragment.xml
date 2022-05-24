@@ -305,5 +305,19 @@
             app:srcCompat="@drawable/ic_baseline_edit_24"
             android:focusable="true" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabDeleteRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:clickable="true"
+            android:visibility="@{viewModel.isUserPrivileged()}"
+            android:contentDescription="@string/delete_recipe"
+            app:layout_constraintBottom_toTopOf="@+id/fabEditRecipe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_baseline_delete_forever_24"
+            android:focusable="true" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
